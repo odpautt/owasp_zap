@@ -12,8 +12,10 @@ zap = ZAPv2(apikey=apiKey)
 zap = ZAPv2(apikey=apiKey, proxies={'http': 'http://127.0.0.1:8086', 'https': 'http://127.0.0.1:8086'})
 
 print('Spidering target {}'.format(target))
+
 # The scan returns a scan id to support concurrent scanning
 scanID = zap.spider.scan(target)
+print(scanID)
 while int(zap.spider.status(scanID)) < 100:
     # Poll the status until it completes
     print('Spider progress %: {}'.format(zap.spider.status(scanID)))
